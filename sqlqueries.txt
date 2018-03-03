@@ -1,0 +1,8 @@
+Query 1: Teaching by teacher per year (latest year default) like in Excel
+	-select * from course, person inner join person_implementation on person.id = person_implementation.personid inner join implementation on person_implementation.implementationid where course.id = implementation.courseid;
+Query 2: Teaching by student group like in Excel (latest year default)
+	-select * from course as c, subgroup as sg inner join subgroup_implementation as si on sg.id = si.subgroupid inner join implementation as i on i.id= si.implementationid where c.id = i.courseid; 
+Query 3: Student groups by degree program
+	-select * from subgroup as sg, degreeprogram as dp inner join group as g on dp.id=g.degreeprogramid where sg.groupid = g.id;
+QueryTeachers by degree program (teacher can teach in several degree programs)
+	-select * from person as p, degreeprogram as dp inner join person_degreeprogram as pd on pd.personid = p.id where pd.degreeprogramid = dp.id;
